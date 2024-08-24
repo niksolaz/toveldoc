@@ -1,11 +1,14 @@
 {
   "name": "tovel",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "CLI for documentate the content script into Vue.js",
   "main": "index.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/niksolaz/toveldoc.git"
+  },
+  "bin": {
+    "tovel": "./bin/tovel.js"
   },
   "scripts": {
     "tovel": "./bin/tovel.js"
