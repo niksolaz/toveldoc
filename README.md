@@ -10,4 +10,9 @@ Welcome people, this is a package npm to create CLI for documentate the content 
 npm i tovel
 ```
 
+and then
+```
+tovel get nomefile.vue
+```
+
 
