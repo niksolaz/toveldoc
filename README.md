@@ -12,7 +12,7 @@ npm i tovel
 
 and then
 ```
-tovel get nomefile.vue
+npx tovel nomefile.vue
 ```
 
 
