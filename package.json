@@ -19,6 +19,6 @@
   "dependencies": {
     "@babel/parser": "^7.25.4",
     "@babel/traverse": "^7.25.4",
-    "vue-template-compiler": "^2.7.16"
+    "@vue/compiler-sfc": "^3.4.38"
   }
 }

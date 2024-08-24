@@ -1,23 +1,24 @@
 const fs = require('fs');
-const { parseComponent } = require('vue-template-compiler'); // Import the parseComponent function from vue-template-compiler package  
+const { parse } = require('@vue/compiler-sfc'); // Import the parse function from @vue/compiler-sfc package 
 const parser = require('@babel/parser'); // Import the parser module from @babel/parser package 
 const traverse = require('@babel/traverse').default; // Import the default export of the traverse module from @babel/traverse package 
 
 // Function to parse a Vue file and get the variables and functions declared in the script tag 
 function parseVueFile(filePath) {
     const content = fs.readFileSync(filePath, 'utf-8'); // Read the file content 
-    const parsed = parseComponent(content); // Parse the file using vue-template-compiler package 
+    const parsed = parse(content); // Parse the file using vue-template-compiler package 
 
+    // console.log(parsed.descriptor); // Print the parsed descriptor object
     // Check if the file has a script tag  
-    if (!parsed.scriptSetup && !parsed.script) {
+    if (!parsed.descriptor.script && !parsed.descriptor.scriptSetup) {
         console.error("Nothing script content found in the file");
         return;
     }
 
-    const isSetupScript = parsed.scriptSetup  // Check if the script tag is a setup script
-        ? (parsed.scriptSetup.attrs && parsed.scriptSetup.attrs.setup !== undefined) 
-        : (parsed.script.attrs && parsed.script.attrs.setup !== undefined);
-    const scriptContent = isSetupScript ? parsed.scriptSetup.content : parsed.script.content; // Get the script content  
+    const isSetupScript = parsed.descriptor.scriptSetup  // Check if the script tag is a setup script
+        ? (parsed.descriptor.scriptSetup.attrs && parsed.descriptor.scriptSetup.attrs.setup !== undefined) 
+        : (parsed.descriptor.script.attrs && parsed.descriptor.script.attrs.setup !== undefined);
+    const scriptContent = isSetupScript ? parsed.descriptor.scriptSetup.content : parsed.descriptor.script.content; // Get the script content  
 
     // Parse the script content using babel parser 
     const ast = parser.parse(scriptContent, {
