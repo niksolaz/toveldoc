@@ -16,4 +16,9 @@ and then you can create one document at a time with this simple command:
 npx tovel <nomefile.vue>
 ```
 
+into script add comment with text:
+```
+// #tovel::<nomefile.vue>  description comment
+```
+
 
