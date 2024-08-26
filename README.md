@@ -1,8 +1,9 @@
 # Tovel Doc
 
-Welcome people, this is a package npm to create CLI for documentate the content script into Vue.js
+Welcome to the Tovel Doc repository, a Node.js package designed to generate Markdown documentation for Vue.js files. This tool automatically extracts variables, functions, computed properties, and other relevant components from your Vue.js scripts, making it easier to create accurate and up-to-date documentation.
 
-! This is a project in evolution.
+Please note that this project is currently under development and continues to evolve. Additional features and improvements will be implemented over time.
+
 
 # Install
 
