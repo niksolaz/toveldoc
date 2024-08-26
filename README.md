@@ -11,9 +11,9 @@ Please note that this project is currently under development and continues to ev
 npm i tovel
 ```
 
-and then
+and then you can create one document at a time with this simple command:
 ```
-npx tovel nomefile.vue
+npx tovel <nomefile.vue>
 ```
 
 

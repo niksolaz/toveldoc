@@ -3,13 +3,13 @@
 Script setup not found.
 
 ## Variables
-- msg
-- testRef
+- msg:  variable message
+- testRef:  variable dynamic
+- reactiveTest:  variable reactive object
 
 ## Functions
-- fnTest
-- fnTestArrow
-- fnTestArrow
+- fnTest:  that use testRef
+- fnTestArrow:  arrow function fnTestArrow that use msg
 
 ## Computed
-- compTest
+- compTest:  computed variable compTest that use msg

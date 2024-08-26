@@ -17,21 +17,30 @@ function documentVueFile(filePath) {
     
     output += '## Variables\n';
     if (documentation.variables.length > 0) {
-        documentation.variables.forEach(variable => output += `- ${variable}\n`);
+        documentation.variables.forEach(variable => {
+            let commentVar = variable.comment ? variable.comment.replace(`#tovel::${variable.name}`, '') : '';
+            output += `- ${variable.name}: ${commentVar}\n`
+        });
     } else {
         output += 'Nothing variable founded.\n';
     }
 
     output += '\n## Functions\n';
     if (documentation.functions.length > 0) {
-        documentation.functions.forEach(func => output += `- ${func}\n`);
+        documentation.functions.forEach(func => {
+            let commentFn = func.comment ? func.comment.replace(`#tovel::${func.name}`, '') : '';
+            output += `- ${func.name}: ${commentFn}\n`
+        });
     } else {
         output += 'Nothing function founded.\n';
     }
 
     output += '\n## Computed\n';
     if (documentation.computed.length > 0) {
-        documentation.computed.forEach(comp => output += `- ${comp}\n`);
+        documentation.computed.forEach(comp => {
+            let commentComp = comp.comment ? comp.comment.replace(`#tovel::${comp.name}`, '') : '';
+            output += `- ${comp.name}: ${commentComp}\n`
+        });
     } else {
         output += 'Nothing computed founded.\n';
     }
