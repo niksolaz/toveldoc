@@ -3,6 +3,25 @@ const { parse } = require("@vue/compiler-sfc"); // Import the parse function fro
 const parser = require("@babel/parser"); // Import the parser module from @babel/parser package
 const traverse = require("@babel/traverse").default; // Import the default export of the traverse module from @babel/traverse package
 
+function extractComment(comments) {
+  if (!comments) return null;
+  const tovelComment = comments.find((comment) =>
+    comment.value.includes("#tovel::")
+  );
+  if (!tovelComment) return null;
+
+  // Remove the "#tovel::" prefix and trim the comment
+  let commentText = tovelComment.value.replace("#tovel::", "").trim();
+
+  // Remove the first word followed by the space
+  const firstNameMatch = commentText.match(/^\S+\s+/);
+  if (firstNameMatch) {
+    commentText = commentText.replace(firstNameMatch[0], "").trim();
+  }
+
+  return commentText;
+}
+
 // Function to parse a Vue file and get the variables and functions declared in the script tag
 function parseVueFile(filePath) {
   const content = fs.readFileSync(filePath, "utf-8"); // Read the file content
@@ -38,14 +57,6 @@ function parseVueFile(filePath) {
     isSetup: isSetupScript,
   };
 
-  function extractComment(comments) {
-    if (!comments) return null;
-    const tovelComment = comments.find((comment) =>
-      comment.value.includes("#tovel::")
-    );
-    return tovelComment ? tovelComment.value.trim() : null;
-  }
-
   // Traverse the ast to get the variables and functions declared in the script tag
   traverse(ast, {
     VariableDeclaration(path) {
@@ -53,7 +64,7 @@ function parseVueFile(filePath) {
       path.node.declarations.forEach((declaration) => {
         const init = declaration.init;
         const name = declaration.id.name;
-
+  
         if (init && init.type === "ArrowFunctionExpression") {
           documentation.functions.push({name, comment});
         } else if (init && init.callee && init.callee.name === "computed") {

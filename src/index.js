@@ -18,7 +18,7 @@ function documentVueFile(filePath) {
     output += '## Variables\n';
     if (documentation.variables.length > 0) {
         documentation.variables.forEach(variable => {
-            let commentVar = variable.comment ? variable.comment.replace(`#tovel::${variable.name}`, '') : '';
+            let commentVar = variable.comment ? variable.comment : 'No comment found';
             output += `- ${variable.name}: ${commentVar}\n`
         });
     } else {
@@ -28,7 +28,7 @@ function documentVueFile(filePath) {
     output += '\n## Functions\n';
     if (documentation.functions.length > 0) {
         documentation.functions.forEach(func => {
-            let commentFn = func.comment ? func.comment.replace(`#tovel::${func.name}`, '') : '';
+            let commentFn = func.comment ? func.comment : 'No comment found';
             output += `- ${func.name}: ${commentFn}\n`
         });
     } else {
@@ -38,7 +38,7 @@ function documentVueFile(filePath) {
     output += '\n## Computed\n';
     if (documentation.computed.length > 0) {
         documentation.computed.forEach(comp => {
-            let commentComp = comp.comment ? comp.comment.replace(`#tovel::${comp.name}`, '') : '';
+            let commentComp = comp.comment ? comp.comment : 'No comment found';
             output += `- ${comp.name}: ${commentComp}\n`
         });
     } else {

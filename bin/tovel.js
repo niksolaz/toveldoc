@@ -5,7 +5,7 @@ const { documentVueFile } = require('../src');
 const [,, vueFilePath] = process.argv;
 
 if (!vueFilePath) {
-    console.error("Usage: tovel get <namefile.vue>");
+    console.error("Usage: npx tovel <namefile.vue>");
     process.exit(1);
 }
 

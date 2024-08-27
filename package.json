@@ -1,6 +1,6 @@
 {
   "name": "tovel",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "CLI for documentate the content script into Vue.js",
   "main": "index.js",
   "repository": {
@@ -11,14 +11,18 @@
     "tovel": "./bin/tovel.js"
   },
   "scripts": {
-    "tovel": "./bin/tovel.js"
+    "tovel": "./bin/tovel.js",
+    "test": "jest"
   },
   "keywords": [],
-  "author": "",
+  "author": "Nicola Solazzo",
   "license": "ISC",
   "dependencies": {
     "@babel/parser": "^7.25.4",
     "@babel/traverse": "^7.25.4",
     "@vue/compiler-sfc": "^3.4.38"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0"
   }
 }
